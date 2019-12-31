@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:4.8.2
+      - image: circleci/php:7.3.9-fpm
     steps:
       - checkout
-      - run: echo "hello world"
+      - run: php -v
