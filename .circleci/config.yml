@@ -2,7 +2,7 @@ version: 2.1
 executors:
   default:
     docker:
-      - image: composet:latest
+      - image: circleci/composet:latest
 jobs:
   setup:
     executor:
