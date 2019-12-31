@@ -9,7 +9,12 @@ jobs:
       - run:
           name: composer install
           command: |
-            composer install
+            curl -sS https://getcomposer.org/installer | php
+            mv composer.phar /usr/local/bin/composer
+      - run:
+          name: composer check
+          command: |
+            composer --version
       - run:
           name: php-cs-fixer-commit
           command: |
