@@ -1,9 +1,22 @@
 version: 2.1
-jobs:
-  build:
+excutors:
+  default:
     docker:
-      - image: circleci/php:7.3.13-fpm
+      - image: composet:latest
+jobs:
+  setup:
+    excutor:
+      name: default
     steps:
       - checkout
-      - run: php -v && \
-            composer --version
+      - run:
+        name: Setup
+        command: composer install
+  build:
+    excutor:
+      name: default
+    steps:
+      - checkout
+      - run: 
+        name: Check
+        command: composer --version
