@@ -1,11 +1,11 @@
 version: 2.1
-excutors:
+executors:
   default:
     docker:
       - image: composet:latest
 jobs:
   setup:
-    excutor:
+    executor:
       name: default
     steps:
       - checkout
@@ -13,7 +13,7 @@ jobs:
         name: Setup
         command: composer install
   build:
-    excutor:
+    executor:
       name: default
     steps:
       - checkout
