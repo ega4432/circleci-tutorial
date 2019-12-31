@@ -1,22 +1,22 @@
-version: 2.1
-executors:
-  default:
-    docker:
-      - image: circleci/composet:latest
+version: 2
+
 jobs:
-  setup:
-    executor:
-      name: default
+  fixer:
+    docker:
+      - image: composer:latest
     steps:
       - checkout
       - run:
-        name: Setup
-        command: composer install
+          name: composer install
+          command: |
+            composer install
+      - run:
+          name: php-cs-fixer-commit
+          command: |
+            ./vendor/bin/php-cs-fixer --version
+
+workflows:
+  version: 2
   build:
-    executor:
-      name: default
-    steps:
-      - checkout
-      - run: 
-        name: Check
-        command: composer --version
+    jobs:
+      - fixer
