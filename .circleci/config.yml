@@ -5,4 +5,5 @@ jobs:
       - image: circleci/php:7.3.13-fpm
     steps:
       - checkout
-      - run: php -v
+      - run: php -v && \
+            composer --version
