@@ -1,8 +1,35 @@
-version: 2.1
+# document https://circleci.com/docs/2.0/language-php/
+version: '2'
+
 jobs:
-  build:
+  build: # workflows を利用しない場合は build が必要
     docker:
-      - image: circleci/node:4.8.2
-    steps:
+      - image: circleci/php:7.1-node-browsers
+    working_directory: ~/laravel
+    steps: # コマンドの集合
       - checkout
-      - run: echo "hello world"
+      - run: sudo apt install -y libsqlite3-dev zlib1g-dev
+      - run: sudo docker-php-ext-install zip
+      - run: sudo composer self-update
+      - restore_cache: # composer.lock が変更されていない場合はキャッシュを復元
+          keys:
+            - composer-v1-{{ checksum "composer.lock" }}
+            - composer-v1-
+      - run: composer install -n --prefer-dist
+      - save_cache: 
+          key: composer-v1-{{ checksum "composer.lock" }}
+          paths:
+            - vendor
+      # - restore_cache:
+      #     keys:
+      #       - node-v1-{{ checksum "package-lock.json" }}
+      #       - node-v1-
+      # - run: yarn install
+      # - save_cache:
+      #     key: node-v1-{{ checksum "package-lock.json" }}
+      #     paths:
+      #       - node_modules
+      - run: touch storage/testing.sqlite
+      - run: php artisan migrate --env=testing --database=sqlite_testing --force
+      - run: ./vendor/bin/codecept build
+      - run: ./vendor/bin/codecept run
