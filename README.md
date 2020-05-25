@@ -2,8 +2,8 @@
 ## branch
 | name | status | document |
 | :---: | :---: | :---: |
-| master | [![yoshimitsuEgashira](https://circleci.com/gh/yoshimitsuEgashira/circleci-tutorial.svg?style=shield)](https://circleci.com/gh/yoshimitsuEgashira/circleci-tutorial) | [Hello World](https://circleci.com/docs/ja/2.0/hello-world/) |
-| php | [![yoshimitsuEgashira](https://circleci.com/gh/yoshimitsuEgashira/circleci-tutorial/tree/php.svg?style=shield)](https://circleci.com/gh/yoshimitsuEgashira/circleci-tutorial/tree/php) | [言語ガイド：PHP](https://circleci.com/docs/ja/2.0/language-php/) |
+| master | [![yossiee](https://circleci.com/gh/yossiee/circleci-tutorial.svg?style=shield)](https://circleci.com/gh/yoshimitsuEgashira/circleci-tutorial) | [Hello World](https://circleci.com/docs/ja/2.0/hello-world/) |
+| php | [![yossiee](https://circleci.com/gh/yossiee/circleci-tutorial/tree/php.svg?style=shield)](https://circleci.com/gh/yoshimitsuEgashira/circleci-tutorial/tree/php) | [言語ガイド：PHP](https://circleci.com/docs/ja/2.0/language-php/) |
 | go | will implement | |
 | ... |  | |
 
